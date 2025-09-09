@@ -7,6 +7,7 @@
     <style>
         * {
             margin: 0;
+            
             padding: 0;
             box-sizing: border-box;
         }
@@ -15,7 +16,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #137055 0%, #095126 100%);
             overflow-x: hidden;
         }
 
@@ -29,7 +30,7 @@
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 20px rgba(7, 61, 28, 0.1);
         }
 
         .nav-container {
@@ -44,7 +45,7 @@
         .nav-logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #667eea;
+            color: #0d513c;
         }
 
         .nav-menu {
@@ -55,7 +56,8 @@
 
         .nav-link {
             text-decoration: none;
-            color: #333;
+            font-weight: 400;
+            color: #172e20;
             font-weight: 500;
             transition: all 0.3s ease;
             padding: 0.5rem 1rem;
@@ -63,8 +65,8 @@
         }
 
         .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
+            color: #030b08;
+            background: rgba(104, 148, 127, 0.1);
             transform: translateY(-2px);
         }
 
@@ -77,7 +79,7 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #333;
+            background: #294a38;
             margin: 3px 0;
             transition: 0.3s;
         }
@@ -104,7 +106,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0c4f26 0%, #11824f 100%);
             color: white;
             display: flex;
             align-items: center;
@@ -135,6 +137,7 @@
         /* Logo Section */
         .logo-section {
             background: white;
+            /* background-image: url('img/bg1.jpg'); */
             text-align: center;
         }
 
@@ -149,21 +152,27 @@
         .logo-placeholder {
             width: 200px;
             height: 200px;
-            border: 3px dashed #667eea;
+            border: 3px solid #0d4c38;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(9, 75, 55, 0.1);
             transition: all 0.3s ease;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
         .logo-placeholder:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(8, 61, 47, 0.3);
+        }
+
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .logo-info {
@@ -172,14 +181,14 @@
         }
 
         .logo-info h3 {
-            color: #667eea;
+            color: #0d4339;
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
         /* Team Section */
         .team-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #0c4f26 0%, #11824f 100%);
             color: white;
         }
 
@@ -191,13 +200,12 @@
         }
 
         .team-member {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(153, 215, 191, 0.2);
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .team-member:hover {
@@ -208,16 +216,32 @@
         .member-photo {
             width: 120px;
             height: 120px;
-            border: 3px dashed white;
+            border: 3px solid white;
             border-radius: 50%;
             margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.1);
-            position: relative;
             overflow: hidden;
-            cursor: pointer;
+            position: relative;
+        }
+
+        /* PERBAIKAN UTAMA - CSS untuk foto anggota */
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .member-photo.placeholder {
+            border: 3px dashed white;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Location Section */
@@ -228,20 +252,92 @@
         .location-map {
             width: 100%;
             height: 400px;
-            border: 2px solid #667eea;
+            border: 2px solid #0f513f;
             border-radius: 15px;
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(33, 94, 70, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            color: #667eea;
+            color: #16462f;
             margin-top: 2rem;
+        }
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(23, 87, 81, 0.1);
+            margin-top: 30px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Music Controls */
+        .music-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .music-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #2c6224, #b0f4be);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(8, 53, 18, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .music-btn.playing {
+            animation: musicPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .volume-control {
+            position: absolute;
+            right: 70px;
+            bottom: 0;
+            background: rgba(255,255,255,0.95);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            width: 100px;
         }
 
         /* Programs Section */
         .programs-section {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #0c4f26 0%, #11824f 100%);
             color: white;
         }
 
@@ -253,7 +349,7 @@
         }
 
         .program-card {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(216, 240, 229, 0.2);
             padding: 2rem;
             border-radius: 15px;
             backdrop-filter: blur(10px);
@@ -279,43 +375,37 @@
 
         .photo-placeholder {
             aspect-ratio: 4/3;
-            border: 2px dashed #667eea;
+            border: 2px solid #0c4533;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(31, 103, 84, 0.1);
             transition: all 0.3s ease;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
         .photo-placeholder:hover {
             transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 25px rgba(20, 72, 57, 0.3);
         }
 
-        .photo-input {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .uploaded-image {
+        .photo-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 8px;
         }
 
+        .photo-placeholder.empty {
+            border: 2px dashed #0c3e2b;
+            color: #f6f7fa;
+        }
+
         /* Contact Section */
         .contact-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0c4f26 0%, #11824f 100%);
             color: white;
             text-align: center;
         }
@@ -334,29 +424,6 @@
             border-radius: 15px;
             backdrop-filter: blur(10px);
             min-width: 200px;
-        }
-
-        /* Storage indicator */
-        .storage-indicator {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            z-index: 999;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .storage-indicator.saving {
-            background: rgba(255, 193, 7, 0.9);
-            color: #856404;
-        }
-
-        .storage-indicator.saved {
-            background: rgba(40, 167, 69, 0.9);
-            color: white;
         }
 
         /* Section Headers */
@@ -378,48 +445,6 @@
             margin: 0 auto;
         }
 
-        /* Data management buttons */
-        .data-controls {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            z-index: 1000;
-        }
-
-        .data-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .data-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .data-btn.export {
-            background: rgba(40, 167, 69, 0.9);
-            color: white;
-        }
-
-        .data-btn.import {
-            background: rgba(0, 123, 255, 0.9);
-            color: white;
-        }
-
-        .data-btn.clear {
-            background: rgba(220, 53, 69, 0.9);
-            color: white;
-        }
-
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -436,16 +461,6 @@
             animation: fadeInUp 0.8s ease;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .saving-animation {
-            animation: pulse 1s infinite;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .hamburger {
@@ -459,7 +474,8 @@
                 flex-direction: column;
                 background-color: white;
                 width: 100%;
-                text-align: center;
+                text-align: cen
+                ter;
                 transition: 0.3s;
                 box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
                 padding: 2rem 0;
@@ -490,16 +506,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-
-            .storage-indicator {
-                right: 10px;
-                top: 70px;
-            }
-
-            .data-controls {
-                bottom: 10px;
-                left: 10px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -519,28 +525,22 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
     </style>
 </head>
 <body>
-    <!-- Storage Indicator -->
-    <div id="storageIndicator" class="storage-indicator" style="display: none;">
-        💾 Menyimpan...
-    </div>
-
-    <!-- Data Controls -->
-    <div class="data-controls">
-        <button class="data-btn export" onclick="exportData()" title="Ekspor data portofolio">
-            📤 Ekspor
-        </button>
-        <button class="data-btn import" onclick="document.getElementById('importFile').click()" title="Impor data portofolio">
-            📥 Impor
-        </button>
-        <button class="data-btn clear" onclick="clearAllData()" title="Hapus semua data">
-            🗑️ Reset
-        </button>
-        <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(this)">
-    </div>
-
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
@@ -582,18 +582,16 @@
                 <p>Penjelasan isi makna dan logo tersebut</p>
             </div>
             <div class="logo-container">
-                <div class="logo-placeholder" onclick="document.getElementById('logoInput').click()">
-                    <input type="file" id="logoInput" accept="image/*" style="display: none;" onchange="displayLogo(this)">
-                    <span id="logoText">Klik untuk upload logo</span>
-                    <img id="logoImage" style="display: none; width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                <div class="logo-placeholder">
+                    <img src="img/logooo.jpg" alt="Logo Kelompok" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display: none; width: 50%; height: 50%; align-items: center; justify-content: center; border: 3px dashed #156746; border-radius: 50%; background: rgba(18, 92, 70, 0.1);">
+                        Logo Kelompok
+                    </div>
                 </div>
                 <div class="logo-info">
                     <h3>Makna Logo</h3>
-                    <p contenteditable="true" id="logoMeaning" onblur="saveLogoMeaning(this.textContent)">
-                        Logo kelompok kami mencerminkan semangat gotong royong dan 
-                        dedikasi dalam melayani masyarakat Kelurahan Sukalaksana. 
-                        Setiap elemen dalam logo memiliki makna mendalam yang 
-                        merepresentasikan nilai-nilai yang kami junjung tinggi.
+                    <p style="text-align: left;">
+                        Logo kelompok kami memiliki beberapa makna gambar yang terkandung didalamnya. Yang pertama adalah gambar tiga figur manusia yang melambangkan sinergi antara mahasiswa, masyarakat, dan juga universitas. Kemudian yang kedua yaitu gambar simetri gerak figur, yang menandakan bahwa kegiatan KKM ini dilakukan dengan semangat, kolaborasi, serta pergerakan yang selaras. Lalu mengenai gambar yang ketiga yaitu makna pada garis lengkung hijau, gambar tersebut melambangkan simbol dukungan, fondasi yang kuat, serta lingkungan alam Sukalaksana yang lestari. Setelah itu, dalam warna hijau dan juga biru yang terdapat dalam logo tersebut, warna hijau melambangkan simbol pertumbuhan, kemakmuran, serta sikap kepedulian terhadap lingkungan. Sedangkan pada warna biru , warna tersebut melambangkan rasa kepercayaan, tanggung jawab, dan juga profesionalisme. Sehingga hasil kombinasi dari logo ini  memberikan kesan segar, energik, dan juga memberikan sisi positifnya. 
                     </p>
                 </div>
             </div>
@@ -605,18 +603,34 @@
         <div class="container">
             <div class="section-header">
                 <h2>Anggota Kelompok</h2>
-                <p>Para anggota kelompok beserta nama dan juga asal gurunannya</p>
+                <p>Berikut ini DPL dan juga para anggota kelompok yang disertai nama dan juga asal jurusannya</p>
             </div>
             <div class="team-grid" id="teamGrid">
                 <!-- Team members will be generated by JavaScript -->
             </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <button onclick="addTeamMember()" style="background: rgba(255,255,255,0.3); color: white; border: 2px dashed white; padding: 1rem 2rem; border-radius: 25px; cursor: pointer; font-size: 1rem;">
-                    + Tambah Anggota
-                </button>
-            </div>
         </div>
     </section>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="Barasuara - Terbuang Dalam Waktu (Official Video).mp3" type="audio/wav">
+    </audio>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <button class="music-btn" id="musicToggle" title="Play/Pause Music">
+            <i class="fas fa-play" id="musicIcon"></i>
+        </button>
+        <button class="music-btn" id="volumeToggle" title="Volume Control">
+            <i class="fas fa-volume-up" id="volumeIcon"></i>
+        </button>
+        <div class="volume-control" id="volumeControl">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+            <i class="fas fa-volume-up"></i>
+        </div>
+    </div>
+
 
     <!-- Location Section -->
     <section class="section location-section" id="lokasi">
@@ -625,11 +639,14 @@
                 <h2>Lokasi KKN</h2>
                 <p>Peta Heatmap Lokasi KKN</p>
             </div>
-            <div class="location-map">
+            <!-- <div class="location-map">
                 <div style="text-align: center;">
                     <h3 style="margin-bottom: 1rem;">Kelurahan Sukalaksana</h3>
-                    <p>Klik untuk menambahkan peta atau informasi lokasi detail</p>
+                    <p>Tambahkan peta atau informasi lokasi detail di sini</p>
                 </div>
+            </div> -->
+             <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1976.167241623148!2d106.18212502565144!3d-6.191281103100147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMTEnMjkuMSJTIDEwNsKwMTAnNTQuNSJF!5e0!3m2!1sid!2sid!4v1757118525922!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
@@ -639,7 +656,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Program Kerja KKN</h2>
-                <p>Dalam program kerja KKN ini, dia menyelam tampilan pesaaj yg menyerupai button, yg nantinya ketika di klik bango, berupa bukti dokumentasi dan juga penjelasan lengkap mengenai program kerjanya.</p>
+                <p>Program kerja KKN yang menampilkan dokumentasi dan penjelasan lengkap mengenai setiap program.</p>
             </div>
             <div class="programs-grid">
                 <div class="program-card">
@@ -672,15 +689,10 @@
         <div class="container">
             <div class="section-header">
                 <h2>Dokumentasi Kebersamaan Anggota</h2>
-                <p>Foto-foto yang berupa slideshow</p>
+                <p>Foto-foto dokumentasi kegiatan KKN</p>
             </div>
             <div class="photo-gallery" id="photoGallery">
-                <!-- Photo placeholders will be generated by JavaScript -->
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <button onclick="addPhotoSlot()" style="background: #667eea; color: white; border: none; padding: 1rem 2rem; border-radius: 25px; cursor: pointer; font-size: 1rem;">
-                    + Tambah Slot Foto
-                </button>
+                <!-- Photo gallery will be generated by JavaScript -->
             </div>
         </div>
     </section>
@@ -698,221 +710,204 @@
                         📱
                     </div>
                     <h4>Instagram</h4>
-                    <p contenteditable="true" id="instagram" onblur="saveContactInfo('instagram', this.textContent)">@kkn_sukalaksana</p>
+                    <p>@kkm01_sukalaksana2025</p>
+                    <a href="https://www.instagram.com/kkm01_sukalaksana2025?igsh=M3J4bm53c2RqYTh0" style="color: white;">Klik disini</a>
                 </div>
                 <div class="contact-item">
                     <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.3); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
                         📧
                     </div>
                     <h4>Email</h4>
-                    <p contenteditable="true" id="email" onblur="saveContactInfo('email', this.textContent)">kkn.sukalaksana@email.com</p>
+                    <p>kkm01ubj@gmail.com</p>
+                    <a href="mailto:kkm01ubj@gmail.com" style="color: white;">Klik disini</a>
                 </div>
                 <div class="contact-item">
                     <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.3); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
-                        📍
+                        📱
                     </div>
-                    <h4>Alamat</h4>
-                    <p contenteditable="true" id="address" onblur="saveContactInfo('address', this.textContent)">Kelurahan Sukalaksana</p>
+                    <h4>Tiktok</h4>
+                    <p>@kkm.01.unbaja</p>
+                    <a href="https://www.tiktok.com/@kkm.01.unbaja?_t=ZS-8zUI7IUnQFk&_r=1" style="color: white;">Klik disini</a>
                 </div>
             </div>
             <div style="margin-top: 3rem; text-align: center;">
                 <p>Proyek ini dibuat oleh Kelompok 1 Kelurahan Sukalaksana</p>
-                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
-                    💾 Data otomatis tersimpan di browser Anda
-                </p>
             </div>
         </div>
     </section>
 
     <script>
-        // Global variables untuk penyimpanan data
-        let portfolioData = {
-            logo: null,
-            logoMeaning: '',
-            teamMembers: [],
-            photos: [],
-            contactInfo: {
-                instagram: '@kkn_sukalaksana',
-                email: 'kkn.sukalaksana@email.com',
-                address: 'Kelurahan Sukalaksana'
-            },
-            programs: {}
+        // Data konfigurasi untuk foto statis
+        const portfolioConfig = {
+            // Konfigurasi anggota tim - edit sesuai kebutuhan
+            teamMembers: [
+                {
+                    name: 'Bapa Iba Gunawan S.E M.M',
+                    university: 'Dosen Pembimbing Lapangan',
+                    photo: 'img/iba.jpg'
+                },
+                {
+                    name: 'Farizzimas Ramdhan',
+                    university: 'Sistem Informasi',
+                    photo: 'img/fariz.jpg'
+                },
+                {
+                    name: 'Afrianti',
+                    university: 'Teknik Lingkungan',
+                    photo: 'img/afri.jpg'
+                },
+                {
+                    name: 'Rina Holina',
+                    university: 'Pendidikan Pancasila dan Kewarganegaraan', 
+                    photo: 'img/rina.jpg'
+                },
+                {
+                    name: 'Harunnarosid',
+                    university: 'Teknik Industri',
+                    photo: 'img/harun.jpg'
+                },
+                {
+                    name: 'Adhitiya Ayu Puspitasari',
+                    university: 'Teknik Informatika',
+                    photo: 'img/ayucantik.jpg'
+                },
+                {
+                    name: 'Erni Irnawati',
+                    university: 'Pendidikan Akuntansi',
+                    photo: 'img/erni.jpg'
+                },
+                {
+                    name: 'Siti Muftikhah',
+                    university: 'Pendidikan Akuntansi',
+                    photo: 'img/tikah.jpg'
+                },
+                {
+                    name: 'Muhlis',
+                    university: 'Teknik Informatika',
+                    photo: 'img/muhlis.jpg'
+                },
+                {
+                    name: 'M. Gatan Anugrah',
+                    university: 'Teknik Informatika',
+                    photo: 'img/gatan.jpg'
+                },
+                {
+                    name: 'Billy Joevansen',
+                    university: 'Teknik Informatika',
+                    photo: 'img/bili.jpg'
+                },
+                {
+                    name: 'Rossinta Roviana',
+                    university: 'Teknik Informatika',
+                    photo: 'img/sinta.jpg'
+                },
+                {
+                    name: 'Muhamad Esa Anugrah Aditya',
+                    university: 'Teknik Industri',
+                    photo: 'img/esa.jpg'
+                },
+                {
+                    name: 'Ebi Pariabi',
+                    university: 'Teknik Sipil',
+                    photo: 'img/ebi.jpg'
+                },
+                {
+                    name: 'Fara Nabila',
+                    university: 'Administrasi Kesehatan',
+                    photo: 'img/fara.jpg'
+                },
+                {
+                    name: 'Dwi Rosmayati',
+                    university: 'Teknik Informatika',
+                    photo: 'img/dwi.jpg'
+                }
+            ],
+            
+            // Konfigurasi foto dokumentasi - edit sesuai kebutuhan
+            documentationPhotos: [
+                'img/dok1.jpg',
+                'img/dok2.jpg', 
+                'img/dok6.jpg',
+                'img/dok9.jpg',
+                'img/dok3.jpg',
+                'img/dok4.jpg',
+                'img/dok13.jpg',
+                'img/dok5.jpg',
+                'img/dok11.jpg',
+                'img/dok10.jpg',
+                'img/dok8.jpg',
+                'img/dok7.jpg',
+                'img/dok12.jpg',
+                'img/dok18.jpg',
+                'img/dok14.jpg',
+                'img/dok17.jpg'
+
+            ]
         };
 
-        // Storage functions
-        function saveToStorage() {
-            try {
-                showStorageIndicator('saving');
-                localStorage.setItem('kknPortfolioData', JSON.stringify(portfolioData));
-                showStorageIndicator('saved');
-                console.log('✅ Data berhasil disimpan ke localStorage');
-            } catch (error) {
-                console.error('❌ Error menyimpan data:', error);
-                alert('Gagal menyimpan data. Storage mungkin penuh.');
+        // Music Controls
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        const volumeToggle = document.getElementById('volumeToggle');
+        const volumeControl = document.getElementById('volumeControl');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeIcon = document.getElementById('volumeIcon');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        let isPlaying = false;
+        let isMuted = false;
+
+        musicToggle.addEventListener('click', function() {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+                musicToggle.classList.remove('playing');
+            } else {
+                backgroundMusic.play().catch(e => console.log('Auto-play prevented'));
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+                musicToggle.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        volumeToggle.addEventListener('click', function() {
+            volumeControl.style.display = volumeControl.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        volumeSlider.addEventListener('input', function() {
+            backgroundMusic.volume = this.value / 100;
+            updateVolumeIcon();
+        });
+
+        function updateVolumeIcon() {
+            const volume = backgroundMusic.volume;
+            if (volume === 0) {
+                volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down');
+                volumeIcon.classList.add('fa-volume-mute');
+            } else if (volume < 0.5) {
+                volumeIcon.classList.remove('fa-volume-up', 'fa-volume-mute');
+                volumeIcon.classList.add('fa-volume-down');
+            } else {
+                volumeIcon.classList.remove('fa-volume-down', 'fa-volume-mute');
+                volumeIcon.classList.add('fa-volume-up');
             }
         }
 
-        function loadFromStorage() {
-            try {
-                const savedData = localStorage.getItem('kknPortfolioData');
-                if (savedData) {
-                    portfolioData = JSON.parse(savedData);
-                    console.log('✅ Data berhasil dimuat dari localStorage');
-                    return true;
-                }
-            } catch (error) {
-                console.error('❌ Error memuat data:', error);
-            }
-            return false;
-        }
-
-        function showStorageIndicator(type) {
-            const indicator = document.getElementById('storageIndicator');
-            indicator.style.display = 'block';
-            
-            if (type === 'saving') {
-                indicator.className = 'storage-indicator saving';
-                indicator.textContent = '💾 Menyimpan...';
-            } else if (type === 'saved') {
-                indicator.className = 'storage-indicator saved';
-                indicator.textContent = '✅ Tersimpan';
-                setTimeout(() => {
-                    indicator.style.display = 'none';
-                }, 2000);
-            }
-        }
-
-        // Data management functions
-        function exportData() {
-            try {
-                const dataStr = JSON.stringify(portfolioData, null, 2);
-                const dataBlob = new Blob([dataStr], {type: 'application/json'});
-                const url = URL.createObjectURL(dataBlob);
-                
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = `portofolio-kkn-${new Date().toISOString().split('T')[0]}.json`;
-                link.click();
-                
-                URL.revokeObjectURL(url);
-                alert('✅ Data portofolio berhasil diekspor!');
-            } catch (error) {
-                console.error('❌ Error ekspor data:', error);
-                alert('❌ Gagal mengekspor data');
-            }
-        }
-
-        function importData(input) {
-            const file = input.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const importedData = JSON.parse(e.target.result);
-                    
-                    // Validasi struktur data
-                    if (importedData.teamMembers && Array.isArray(importedData.teamMembers)) {
-                        if (confirm('Apakah Anda yakin ingin mengimpor data ini? Data saat ini akan diganti.')) {
-                            portfolioData = importedData;
-                            saveToStorage();
-                            location.reload(); // Reload untuk menampilkan data baru
-                        }
-                    } else {
-                        alert('❌ File tidak valid atau format salah');
-                    }
-                } catch (error) {
-                    console.error('❌ Error import data:', error);
-                    alert('❌ Gagal mengimpor data. File mungkin rusak.');
-                }
-            };
-            reader.readAsText(file);
-            input.value = ''; // Reset input
-        }
-
-        function clearAllData() {
-            if (confirm('⚠️ Apakah Anda yakin ingin menghapus SEMUA data portofolio? Tindakan ini tidak dapat dibatalkan!')) {
-                localStorage.removeItem('kknPortfolioData');
-                alert('✅ Semua data telah dihapus');
-                location.reload();
-            }
-        }
+        // Set initial volume
+        backgroundMusic.volume = 0.5;
+ 
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            // Load data from storage first
-            loadFromStorage();
-            
-            // Initialize components with saved data
             initializeTeamMembers();
             initializePhotoGallery();
-            initializeLogo();
-            initializeContactInfo();
             initializeScrollAnimation();
             initializeNavigation();
             
-            console.log('🎉 Portofolio KKN dengan penyimpanan permanen berhasil dimuat!');
+            console.log('Portfolio KKN dengan foto statis berhasil dimuat!');
         });
-
-        // Logo functionality with persistence
-        function initializeLogo() {
-            if (portfolioData.logo) {
-                const logoImage = document.getElementById('logoImage');
-                const logoText = document.getElementById('logoText');
-                logoImage.src = portfolioData.logo;
-                logoImage.style.display = 'block';
-                logoText.style.display = 'none';
-            }
-            
-            if (portfolioData.logoMeaning) {
-                document.getElementById('logoMeaning').textContent = portfolioData.logoMeaning;
-            }
-        }
-
-        function displayLogo(input) {
-            const file = input.files[0];
-            if (file) {
-                // Check file size (max 5MB)
-                if (file.size > 5 * 1024 * 1024) {
-                    alert('❌ Ukuran file terlalu besar. Maksimal 5MB.');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const logoImage = document.getElementById('logoImage');
-                    const logoText = document.getElementById('logoText');
-                    
-                    logoImage.src = e.target.result;
-                    logoImage.style.display = 'block';
-                    logoText.style.display = 'none';
-                    
-                    // Save to storage
-                    portfolioData.logo = e.target.result;
-                    saveToStorage();
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function saveLogoMeaning(meaning) {
-            portfolioData.logoMeaning = meaning;
-            saveToStorage();
-        }
-
-        // Contact info with persistence
-        function initializeContactInfo() {
-            if (portfolioData.contactInfo) {
-                document.getElementById('instagram').textContent = portfolioData.contactInfo.instagram;
-                document.getElementById('email').textContent = portfolioData.contactInfo.email;
-                document.getElementById('address').textContent = portfolioData.contactInfo.address;
-            }
-        }
-
-        function saveContactInfo(field, value) {
-            portfolioData.contactInfo[field] = value;
-            saveToStorage();
-        }
 
         // Navigation functionality
         function initializeNavigation() {
@@ -971,175 +966,49 @@
             }
         }
 
-        // Team members with persistence
+        // Team members with static photos - FUNGSI YANG DIPERBAIKI
         function initializeTeamMembers() {
-            // Load from storage or create default members
-            if (portfolioData.teamMembers.length === 0) {
-                for (let i = 0; i < 7; i++) {
-                    portfolioData.teamMembers.push({
-                        name: `Anggota ${i + 1}`,
-                        university: 'Nama Universitas',
-                        photo: null
-                    });
-                }
-                saveToStorage();
-            }
-            renderTeamMembers();
-        }
-
-        function renderTeamMembers() {
             const teamGrid = document.getElementById('teamGrid');
             teamGrid.innerHTML = '';
 
-            portfolioData.teamMembers.forEach((member, index) => {
+            portfolioConfig.teamMembers.forEach((member, index) => {
                 const memberDiv = document.createElement('div');
                 memberDiv.className = 'team-member';
                 memberDiv.innerHTML = `
-                    <div class="member-photo" onclick="uploadMemberPhoto(${index})">
-                        <input type="file" id="memberPhoto${index}" accept="image/*" style="display: none;" onchange="displayMemberPhoto(${index}, this)">
-                        ${member.photo ? 
-                            `<img src="${member.photo}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">` : 
-                            'Foto'
-                        }
+                    <div class="member-photo">
+                        <img src="${member.photo}" alt="${member.name}" 
+                             >
                     </div>
-                    <h4 contenteditable="true" onblur="updateMemberName(${index}, this.textContent)" onclick="this.focus()">${member.name}</h4>
-                    <p contenteditable="true" onblur="updateMemberUniversity(${index}, this.textContent)" onclick="this.focus()">${member.university}</p>
-                    <button onclick="removeMember(${index})" style="background: rgba(255,0,0,0.7); color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; margin-top: 0.5rem; cursor: pointer; font-size: 0.8rem;">
-                        🗑️ Hapus
-                    </button>
+                    <h4>${member.name}</h4>
+                    <p>${member.university}</p>
                 `;
                 teamGrid.appendChild(memberDiv);
             });
         }
 
-        function addTeamMember() {
-            portfolioData.teamMembers.push({
-                name: `Anggota ${portfolioData.teamMembers.length + 1}`,
-                university: 'Nama Universitas',
-                photo: null
-            });
-            saveToStorage();
-            renderTeamMembers();
-        }
-
-        function removeMember(index) {
-            if (confirm('Apakah Anda yakin ingin menghapus anggota ini?')) {
-                portfolioData.teamMembers.splice(index, 1);
-                saveToStorage();
-                renderTeamMembers();
-            }
-        }
-
-        function uploadMemberPhoto(index) {
-            document.getElementById(`memberPhoto${index}`).click();
-        }
-
-        function displayMemberPhoto(index, input) {
-            const file = input.files[0];
-            if (file) {
-                // Check file size (max 3MB per photo)
-                if (file.size > 3 * 1024 * 1024) {
-                    alert('❌ Ukuran foto terlalu besar. Maksimal 3MB per foto.');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    portfolioData.teamMembers[index].photo = e.target.result;
-                    saveToStorage();
-                    renderTeamMembers();
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function updateMemberName(index, name) {
-            portfolioData.teamMembers[index].name = name;
-            saveToStorage();
-        }
-
-        function updateMemberUniversity(index, university) {
-            portfolioData.teamMembers[index].university = university;
-            saveToStorage();
-        }
-
-        // Photo gallery with persistence
+        // Photo gallery with static photos  
         function initializePhotoGallery() {
-            // Load from storage or create default slots
-            if (portfolioData.photos.length === 0) {
-                for (let i = 0; i < 6; i++) {
-                    portfolioData.photos.push(null);
-                }
-                saveToStorage();
-            }
-            renderPhotoGallery();
-        }
-
-        function renderPhotoGallery() {
             const gallery = document.getElementById('photoGallery');
             gallery.innerHTML = '';
 
-            portfolioData.photos.forEach((photo, index) => {
+            portfolioConfig.documentationPhotos.forEach((photoPath, index) => {
                 const photoDiv = document.createElement('div');
                 photoDiv.className = 'photo-placeholder';
                 
-                if (photo) {
-                    photoDiv.innerHTML = `
-                        <img src="${photo}" alt="Dokumentasi ${index + 1}" class="uploaded-image">
-                        <div style="position: absolute; top: 5px; right: 5px; background: rgba(255,0,0,0.8); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white;" onclick="removePhoto(${index})">
-                            ❌
-                        </div>
-                        <div style="position: absolute; bottom: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 0.2rem 0.5rem; border-radius: 10px; font-size: 0.8rem;">
-                            Foto ${index + 1}
-                        </div>
-                    `;
-                } else {
-                    photoDiv.innerHTML = `
-                        <input type="file" class="photo-input" accept="image/*" onchange="displayPhoto(${index}, this)">
-                        <span>📷 Klik untuk upload foto</span>
-                    `;
-                }
+                photoDiv.innerHTML = `
+                    <img src="${photoPath}" alt="Dokumentasi ${index + 1}" onerror="this.style.display='none'; this.parentElement.classList.add('empty'); this.parentElement.innerHTML='<span>Dokumentasi ${index + 1}</span>';">
+                    <div style="position: absolute; bottom: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 0.2rem 0.5rem; border-radius: 10px; font-size: 0.8rem;">
+                        Dokumentasi ${index + 1}
+                    </div>
+                `;
                 
                 gallery.appendChild(photoDiv);
             });
         }
 
-        function addPhotoSlot() {
-            portfolioData.photos.push(null);
-            saveToStorage();
-            renderPhotoGallery();
-        }
-
-        function displayPhoto(index, input) {
-            const file = input.files[0];
-            if (file) {
-                // Check file size (max 3MB per photo)
-                if (file.size > 3 * 1024 * 1024) {
-                    alert('❌ Ukuran foto terlalu besar. Maksimal 3MB per foto.');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    portfolioData.photos[index] = e.target.result;
-                    saveToStorage();
-                    renderPhotoGallery();
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function removePhoto(index) {
-            if (confirm('Apakah Anda yakin ingin menghapus foto ini?')) {
-                portfolioData.photos[index] = null;
-                saveToStorage();
-                renderPhotoGallery();
-            }
-        }
-
         // Program details functionality
         function showProgramDetails(programType) {
-            let title, content;
+            let title, content, images;
             
             switch(programType) {
                 case 'harian':
@@ -1147,13 +1016,14 @@
                     content = `
                         <h4>Kegiatan Harian:</h4>
                         <ul style="text-align: left; margin: 1rem 0;">
-                            <li>Membantu kegiatan administratif kelurahan</li>
-                            <li>Pendampingan kegiatan masyarakat</li>
-                            <li>Sosialisasi program kesehatan</li>
-                            <li>Bantuan pendidikan untuk anak-anak</li>
+                            <li>Membantu untuk mengajar anak-anak mengaji di warga setempat</li>
+                            <li>Penyelenggaraan ruang literasi untuk anak-anak</li>
+                            <li>Bantuan pendidikan les untuk anak-anak</li>
+                            <li>Membantu ibu -ibu kader dalam program MBG</li>
                         </ul>
                         <p>Program ini dilaksanakan setiap hari dengan tujuan memberikan bantuan langsung kepada masyarakat dalam kegiatan sehari-hari.</p>
                     `;
+                    images = ['img/ngaji.jpg', 'img/baca.jpg', 'img/les.jpg', 'img/mbg.jpg'];
                     break;
                 case 'mingguan':
                     title = 'Program Kerja Mingguan';
@@ -1161,29 +1031,43 @@
                         <h4>Kegiatan Mingguan:</h4>
                         <ul style="text-align: left; margin: 1rem 0;">
                             <li>Pembersihan lingkungan bersama masyarakat</li>
-                            <li>Pelatihan keterampilan untuk ibu-ibu PKK</li>
-                            <li>Penyuluhan kesehatan dan gizi</li>
-                            <li>Kegiatan olahraga dan rekreasi</li>
+                            <li>Follow Up terkait sosialisasi UMKM</li>
+                            <li>Kegiatan senam bersama warga setempat</li>
+                            <li>Mengikuti pengajian bersama warga setempat</li>
+                            <li>Mengajar anak - anak di sekolah</li>
+                            <li>Membantu kegiatan posyandu</li>
+                            <li>Pendampingan lomba voli antar kelurahan</li>
+                            <li>Pendampingan persiapan lomba gerak jalan</li>
                         </ul>
                         <p>Program mingguan fokus pada pemberdayaan masyarakat dan peningkatan kualitas hidup.</p>
                     `;
+                    images = ['img/program-mingguan01.jpg', 'img/program-mingguan02.jpg'];
                     break;
                 case 'akhir':
                     title = 'Program Kerja Akhir';
                     content = `
                         <h4>Kegiatan Akhir:</h4>
                         <ul style="text-align: left; margin: 1rem 0;">
-                            <li>Festival budaya dan seni daerah</li>
-                            <li>Pameran hasil karya masyarakat</li>
-                            <li>Serah terima bantuan program</li>
-                            <li>Evaluasi dan pelaporan kegiatan</li>
+                            <li>Pemasangan convex mirror (kaca cembung)</li>
+                            <li>Penanaman bibit pohon</li>
+                            <li>Pembuatan web sekolah</li>
+                            <li>Pembuatan portofolio web kelompok</li>
+                            <li>Sosialisasi mental healt di sekolah SDN 1 Cipete</li>
+                            <li>Sosialisasi anti tawuran dan narkoba di SMA 7</li>
+                            <li>Pembuatan tong sampah minim asap</li>
+                            <li>Penyelenggaraan acara 17 agustus</li>
+                            <li>Sosialisasi dan cek kesehatan gratis</li>
+                            <li>Workshop digitalisasi UMKM lokal</li>
+
+
                         </ul>
                         <p>Program kerja akhir merupakan puncak dari seluruh kegiatan KKN yang telah dilaksanakan.</p>
                     `;
+                    images = ['img/program-akhir01.jpg', 'img/program-akhir02.jpg'];
                     break;
             }
 
-            // Create modal
+            // Create modal with documentation images
             const modal = document.createElement('div');
             modal.style.cssText = `
                 position: fixed;
@@ -1199,17 +1083,25 @@
                 animation: fadeIn 0.3s ease;
             `;
 
+            const imageGallery = images.map((imgPath, index) => `
+                <div style="margin: 0.5rem 0;">
+                    <img src="${imgPath}" alt="Dokumentasi ${programType} ${index + 1}" 
+                         style="width: 100%; max-width: 500px; border-radius: 10px; margin-bottom: 0.5rem;"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; padding: 1rem; background: #f8f9fa; border-radius: 10px; text-align: center; color: #6c757d; border: 2px dashed #dee2e6;">
+                        Foto dokumentasi ${programType} ${index + 1}
+                    </div>
+                </div>
+            `).join('');
+
             modal.innerHTML = `
-                <div style="background: white; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; border-radius: 15px; padding: 2rem; position: relative;">
-                    <button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 1rem; right: 1rem; background: #ff4757; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">✕</button>
+                <div style="background: white; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; border-radius: 15px; padding: 2rem; position: relative;">
+                    <button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 1rem; right: 1rem; background: #ff4757; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 1.2rem;">×</button>
                     <h3 style="color: #667eea; margin-bottom: 1rem;">${title}</h3>
                     <div style="color: #333; line-height: 1.6;">${content}</div>
-                    <div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #667eea;">
-                        <h5>Dokumentasi:</h5>
-                        <p style="margin-top: 0.5rem;">Klik tombol di bawah untuk menambahkan foto dokumentasi program ini.</p>
-                        <button onclick="addProgramDocumentation('${programType}')" style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; margin-top: 1rem;">
-                            📷 Tambah Dokumentasi
-                        </button>
+                    <div style="margin-top: 2rem;">
+                        <h5 style="color: #667eea; margin-bottom: 1rem;">Dokumentasi Kegiatan:</h5>
+                        ${imageGallery}
                     </div>
                 </div>
             `;
@@ -1222,112 +1114,20 @@
                     modal.remove();
                 }
             });
-        }
 
-        function addProgramDocumentation(programType) {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.multiple = true;
-            input.onchange = function() {
-                if (this.files.length > 0) {
-                    // Save program documentation to photos array
-                    Array.from(this.files).forEach(file => {
-                        if (file.size <= 3 * 1024 * 1024) { // 3MB limit
-                            const reader = new FileReader();
-                            reader.onload = function(e) {
-                                portfolioData.photos.push(e.target.result);
-                                saveToStorage();
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    });
-                    
-                    alert(`✅ ${this.files.length} foto dokumentasi untuk ${programType} telah ditambahkan ke galeri!`);
-                    setTimeout(() => {
-                        renderPhotoGallery();
-                    }, 1000);
+            // Add fade in animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
                 }
-            };
-            input.click();
-        }
-
-        // Utility functions
-        function compressImage(file, maxWidth = 800, quality = 0.8) {
-            return new Promise((resolve) => {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                const img = new Image();
-                
-                img.onload = function() {
-                    const ratio = Math.min(maxWidth / img.width, maxWidth / img.height);
-                    canvas.width = img.width * ratio;
-                    canvas.height = img.height * ratio;
-                    
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    canvas.toBlob(resolve, 'image/jpeg', quality);
-                };
-                
-                img.src = URL.createObjectURL(file);
-            });
-        }
-
-        // Storage monitoring
-        function checkStorageUsage() {
-            try {
-                const data = localStorage.getItem('kknPortfolioData');
-                if (data) {
-                    const sizeInBytes = new Blob([data]).size;
-                    const sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
-                    console.log(`📊 Storage usage: ${sizeInMB} MB`);
-                    
-                    if (sizeInMB > 4) {
-                        console.warn('⚠️ Storage usage tinggi, pertimbangkan untuk mengompres gambar');
-                    }
-                }
-            } catch (error) {
-                console.error('Error checking storage:', error);
+            `;
+            if (!document.querySelector('style[data-modal]')) {
+                style.setAttribute('data-modal', 'true');
+                document.head.appendChild(style);
             }
         }
-
-        // Auto-save indicator
-        let saveTimeout;
-        function debouncedSave() {
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(saveToStorage, 1000); // Save after 1 second of inactivity
-        }
-
-        // Performance optimization
-        function optimizeImages() {
-            // Compress images if storage is getting full
-            const data = localStorage.getItem('kknPortfolioData');
-            if (data && new Blob([data]).size > 4 * 1024 * 1024) { // 4MB
-                if (confirm('Storage hampir penuh. Kompres gambar untuk menghemat ruang?')) {
-                    // Implement image compression logic here
-                    alert('Fitur kompresi gambar akan ditambahkan di update selanjutnya');
-                }
-            }
-        }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey) {
-                switch(e.key) {
-                    case 's':
-                        e.preventDefault();
-                        saveToStorage();
-                        break;
-                    case 'e':
-                        e.preventDefault();
-                        exportData();
-                        break;
-                    case 'h':
-                        e.preventDefault();
-                        document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
-                        break;
-                }
-            }
-        });
 
         // Scroll to top functionality
         window.addEventListener('scroll', function() {
@@ -1338,7 +1138,7 @@
                     scrollBtn.innerHTML = '↑';
                     scrollBtn.style.cssText = `
                         position: fixed;
-                        bottom: 120px;
+                        bottom: 20px;
                         right: 20px;
                         background: #667eea;
                         color: white;
@@ -1364,118 +1164,6 @@
                 }
             }
         });
-
-        // Monitor storage usage periodically
-        setInterval(checkStorageUsage, 30000); // Check every 30 seconds
-
-        // Add success notifications
-        function showNotification(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: ${type === 'success' ? '#28a745' : '#dc3545'};
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 10px;
-                z-index: 2000;
-                animation: slideInRight 0.3s ease;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideOutRight 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
-        }
-
-        // Add CSS animations
-        const additionalStyles = document.createElement('style');
-        additionalStyles.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            
-            @keyframes slideInRight {
-                from { 
-                    opacity: 0; 
-                    transform: translateX(100px); 
-                }
-                to { 
-                    opacity: 1; 
-                    transform: translateX(0); 
-                }
-            }
-            
-            @keyframes slideOutRight {
-                from { 
-                    opacity: 1; 
-                    transform: translateX(0); 
-                }
-                to { 
-                    opacity: 0; 
-                    transform: translateX(100px); 
-                }
-            }
-            
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            [contenteditable]:focus {
-                outline: 2px solid #667eea;
-                background: rgba(102, 126, 234, 0.1);
-                border-radius: 5px;
-                padding: 0.2rem;
-            }
-
-            .data-btn:active {
-                transform: translateY(0) scale(0.95);
-            }
-
-            .photo-placeholder:hover {
-                border-color: #5a6fd8;
-            }
-
-            .team-member:hover .member-photo {
-                transform: scale(1.1);
-            }
-
-            @media (max-width: 768px) {
-                .data-controls {
-                    flex-direction: row;
-                    bottom: 80px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    gap: 0.3rem;
-                }
-                
-                .data-btn {
-                    padding: 0.4rem 0.8rem;
-                    font-size: 0.7rem;
-                }
-            }
-        `;
-        document.head.appendChild(additionalStyles);
-
-        console.log('🎉 Portofolio KKN dengan penyimpanan permanen siap digunakan!');
-        console.log('💡 Tips:');
-        console.log('  - Ctrl+S: Manual save');
-        console.log('  - Ctrl+E: Export data');
-        console.log('  - Ctrl+H: Scroll to top');
-        console.log('  - Data tersimpan otomatis di browser');
     </script>
 </body>
 </html>
