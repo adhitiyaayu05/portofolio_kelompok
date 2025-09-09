@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio KKN Kelompok 1 - Kelurahan Sukalaksana</title>
+    <!-- Font Awesome CDN untuk icon musik -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
-            
             padding: 0;
             box-sizing: border-box;
         }
@@ -137,7 +138,6 @@
         /* Logo Section */
         .logo-section {
             background: white;
-            /* background-image: url('img/bg1.jpg'); */
             text-align: center;
         }
 
@@ -278,7 +278,7 @@
             border: none;
         }
 
-        /* Music Controls */
+        /* Music Controls - PERBAIKAN UTAMA */
         .music-controls {
             position: fixed;
             bottom: 20px;
@@ -307,6 +307,7 @@
 
         .music-btn:hover {
             transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(8, 53, 18, 0.4);
         }
 
         .music-btn.playing {
@@ -329,10 +330,40 @@
             display: none;
             align-items: center;
             gap: 10px;
+            backdrop-filter: blur(10px);
+            color: #333;
+        }
+
+        .volume-control.active {
+            display: flex;
         }
 
         .volume-slider {
             width: 100px;
+            height: 5px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #2c6224;
+            cursor: pointer;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #2c6224;
+            cursor: pointer;
+            border: none;
         }
 
         /* Programs Section */
@@ -474,8 +505,7 @@
                 flex-direction: column;
                 background-color: white;
                 width: 100%;
-                text-align: cen
-                ter;
+                text-align: center;
                 transition: 0.3s;
                 box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
                 padding: 2rem 0;
@@ -505,6 +535,11 @@
             .contact-info {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .volume-control {
+                right: 10px;
+                bottom: 80px;
             }
         }
 
@@ -613,7 +648,9 @@
 
     <!-- Background Music -->
     <audio id="backgroundMusic" loop>
-        <source src="Barasuara - Terbuang Dalam Waktu (Official Video).mp3" type="audio/wav">
+        <source src="Barasuara - Terbuang Dalam Waktu (Official Video).mp3" type="audio/mpeg">
+        <source src="Barasuara - Terbuang Dalam Waktu (Official Video).wav" type="audio/wav">
+        <source src="Barasuara - Terbuang Dalam Waktu (Official Video).ogg" type="audio/ogg">
     </audio>
 
     <!-- Music Controls -->
@@ -631,7 +668,6 @@
         </div>
     </div>
 
-
     <!-- Location Section -->
     <section class="section location-section" id="lokasi">
         <div class="container">
@@ -639,13 +675,7 @@
                 <h2>Lokasi KKN</h2>
                 <p>Peta Heatmap Lokasi KKN</p>
             </div>
-            <!-- <div class="location-map">
-                <div style="text-align: center;">
-                    <h3 style="margin-bottom: 1rem;">Kelurahan Sukalaksana</h3>
-                    <p>Tambahkan peta atau informasi lokasi detail di sini</p>
-                </div>
-            </div> -->
-             <div class="map-container">
+            <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1976.167241623148!2d106.18212502565144!3d-6.191281103100147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMTEnMjkuMSJTIDEwNsKwMTAnNTQuNSJF!5e0!3m2!1sid!2sid!4v1757118525922!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
@@ -841,11 +871,10 @@
                 'img/dok18.jpg',
                 'img/dok14.jpg',
                 'img/dok17.jpg'
-
             ]
         };
 
-        // Music Controls
+        // Music Controls - PERBAIKAN UTAMA
         const musicToggle = document.getElementById('musicToggle');
         const musicIcon = document.getElementById('musicIcon');
         const volumeToggle = document.getElementById('volumeToggle');
@@ -857,47 +886,100 @@
         let isPlaying = false;
         let isMuted = false;
 
-        musicToggle.addEventListener('click', function() {
-            if (isPlaying) {
-                backgroundMusic.pause();
-                musicIcon.classList.remove('fa-pause');
-                musicIcon.classList.add('fa-play');
-                musicToggle.classList.remove('playing');
-            } else {
-                backgroundMusic.play().catch(e => console.log('Auto-play prevented'));
-                musicIcon.classList.remove('fa-play');
-                musicIcon.classList.add('fa-pause');
-                musicToggle.classList.add('playing');
-            }
-            isPlaying = !isPlaying;
-        });
-
-        volumeToggle.addEventListener('click', function() {
-            volumeControl.style.display = volumeControl.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        volumeSlider.addEventListener('input', function() {
-            backgroundMusic.volume = this.value / 100;
+        // Initialize music controls
+        function initializeMusicControls() {
+            // Set initial volume
+            backgroundMusic.volume = 0.5;
             updateVolumeIcon();
-        });
+
+            // Music toggle functionality
+            musicToggle.addEventListener('click', function() {
+                if (isPlaying) {
+                    backgroundMusic.pause();
+                    musicIcon.className = 'fas fa-play';
+                    musicToggle.classList.remove('playing');
+                } else {
+                    backgroundMusic.play().catch(e => {
+                        console.log('Auto-play prevented:', e);
+                        alert('Klik tombol untuk memulai musik');
+                    });
+                    musicIcon.className = 'fas fa-pause';
+                    musicToggle.classList.add('playing');
+                }
+                isPlaying = !isPlaying;
+            });
+
+            // Volume toggle functionality
+            volumeToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                volumeControl.classList.toggle('active');
+            });
+
+            // Close volume control when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!volumeToggle.contains(e.target) && !volumeControl.contains(e.target)) {
+                    volumeControl.classList.remove('active');
+                }
+            });
+
+            // Volume slider functionality
+            volumeSlider.addEventListener('input', function() {
+                backgroundMusic.volume = this.value / 100;
+                updateVolumeIcon();
+                
+                if (this.value == 0) {
+                    isMuted = true;
+                } else {
+                    isMuted = false;
+                }
+            });
+
+            // Music ended event
+            backgroundMusic.addEventListener('ended', function() {
+                musicIcon.className = 'fas fa-play';
+                musicToggle.classList.remove('playing');
+                isPlaying = false;
+            });
+
+            // Volume icon click to mute/unmute
+            volumeIcon.addEventListener('click', function() {
+                if (isMuted) {
+                    backgroundMusic.volume = 0.5;
+                    volumeSlider.value = 50;
+                    isMuted = false;
+                } else {
+                    backgroundMusic.volume = 0;
+                    volumeSlider.value = 0;
+                    isMuted = true;
+                }
+                updateVolumeIcon();
+            });
+        }
 
         function updateVolumeIcon() {
             const volume = backgroundMusic.volume;
-            if (volume === 0) {
-                volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down');
-                volumeIcon.classList.add('fa-volume-mute');
+            const volumeIcons = volumeControl.querySelectorAll('i');
+            
+            // Update main volume icon
+            if (volume === 0 || isMuted) {
+                volumeIcon.className = 'fas fa-volume-mute';
             } else if (volume < 0.5) {
-                volumeIcon.classList.remove('fa-volume-up', 'fa-volume-mute');
-                volumeIcon.classList.add('fa-volume-down');
+                volumeIcon.className = 'fas fa-volume-down';
             } else {
-                volumeIcon.classList.remove('fa-volume-down', 'fa-volume-mute');
-                volumeIcon.classList.add('fa-volume-up');
+                volumeIcon.className = 'fas fa-volume-up';
+            }
+            
+            // Update volume control icons
+            if (volumeIcons.length >= 2) {
+                if (volume === 0) {
+                    volumeIcons[0].className = 'fas fa-volume-mute';
+                    volumeIcons[1].className = 'fas fa-volume-mute';
+                } else {
+                    volumeIcons[0].className = 'fas fa-volume-down';
+                    volumeIcons[1].className = 'fas fa-volume-up';
+                }
             }
         }
-
-        // Set initial volume
-        backgroundMusic.volume = 0.5;
- 
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -905,8 +987,9 @@
             initializePhotoGallery();
             initializeScrollAnimation();
             initializeNavigation();
+            initializeMusicControls(); // Initialize music controls
             
-            console.log('Portfolio KKN dengan foto statis berhasil dimuat!');
+            console.log('Portfolio KKN dengan kontrol musik yang diperbaiki berhasil dimuat!');
         });
 
         // Navigation functionality
@@ -966,7 +1049,7 @@
             }
         }
 
-        // Team members with static photos - FUNGSI YANG DIPERBAIKI
+        // Team members with static photos
         function initializeTeamMembers() {
             const teamGrid = document.getElementById('teamGrid');
             teamGrid.innerHTML = '';
@@ -977,7 +1060,7 @@
                 memberDiv.innerHTML = `
                     <div class="member-photo">
                         <img src="${member.photo}" alt="${member.name}" 
-                             >
+                             onerror="this.style.display='none'; this.parentElement.classList.add('placeholder'); this.parentElement.innerHTML='<span style=\\"color: white; font-size: 0.9rem; text-align: center;\\">${member.name}</span>';">
                     </div>
                     <h4>${member.name}</h4>
                     <p>${member.university}</p>
@@ -996,14 +1079,65 @@
                 photoDiv.className = 'photo-placeholder';
                 
                 photoDiv.innerHTML = `
-                    <img src="${photoPath}" alt="Dokumentasi ${index + 1}" onerror="this.style.display='none'; this.parentElement.classList.add('empty'); this.parentElement.innerHTML='<span>Dokumentasi ${index + 1}</span>';">
-                    <div style="position: absolute; bottom: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 0.2rem 0.5rem; border-radius: 10px; font-size: 0.8rem;">
+                    <img src="${photoPath}" alt="Dokumentasi ${index + 1}" 
+                         onerror="this.style.display='none'; this.parentElement.classList.add('empty'); this.parentElement.innerHTML='<span>Dokumentasi ${index + 1}</span>';"
+                         onclick="openImageModal('${photoPath}', 'Dokumentasi ${index + 1}')">
+                    <div style="position: absolute; bottom: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 0.2rem 0.5rem; border-radius: 10px; font-size: 0.8rem; pointer-events: none;">
                         Dokumentasi ${index + 1}
                     </div>
                 `;
                 
                 gallery.appendChild(photoDiv);
             });
+        }
+
+        // Image modal for gallery
+        function openImageModal(imageSrc, imageAlt) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 3000;
+                animation: fadeIn 0.3s ease;
+                cursor: pointer;
+            `;
+
+            modal.innerHTML = `
+                <div style="position: relative; max-width: 90%; max-height: 90%;">
+                    <img src="${imageSrc}" alt="${imageAlt}" 
+                         style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="position: absolute; top: -10px; right: -10px; background: #ff4757; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 1.2rem; font-weight: bold;">×</button>
+                    <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">
+                        ${imageAlt}
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Close modal when clicking outside image
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+
+            // Close modal with Escape key
+            const escapeHandler = function(e) {
+                if (e.key === 'Escape') {
+                    modal.remove();
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
         }
 
         // Program details functionality
@@ -1019,7 +1153,7 @@
                             <li>Membantu untuk mengajar anak-anak mengaji di warga setempat</li>
                             <li>Penyelenggaraan ruang literasi untuk anak-anak</li>
                             <li>Bantuan pendidikan les untuk anak-anak</li>
-                            <li>Membantu ibu -ibu kader dalam program MBG</li>
+                            <li>Membantu ibu-ibu kader dalam program MBG</li>
                         </ul>
                         <p>Program ini dilaksanakan setiap hari dengan tujuan memberikan bantuan langsung kepada masyarakat dalam kegiatan sehari-hari.</p>
                     `;
@@ -1034,7 +1168,7 @@
                             <li>Follow Up terkait sosialisasi UMKM</li>
                             <li>Kegiatan senam bersama warga setempat</li>
                             <li>Mengikuti pengajian bersama warga setempat</li>
-                            <li>Mengajar anak - anak di sekolah</li>
+                            <li>Mengajar anak-anak di sekolah</li>
                             <li>Membantu kegiatan posyandu</li>
                             <li>Pendampingan lomba voli antar kelurahan</li>
                             <li>Pendampingan persiapan lomba gerak jalan</li>
@@ -1052,14 +1186,12 @@
                             <li>Penanaman bibit pohon</li>
                             <li>Pembuatan web sekolah</li>
                             <li>Pembuatan portofolio web kelompok</li>
-                            <li>Sosialisasi mental healt di sekolah SDN 1 Cipete</li>
+                            <li>Sosialisasi mental health di sekolah SDN 1 Cipete</li>
                             <li>Sosialisasi anti tawuran dan narkoba di SMA 7</li>
                             <li>Pembuatan tong sampah minim asap</li>
                             <li>Penyelenggaraan acara 17 agustus</li>
                             <li>Sosialisasi dan cek kesehatan gratis</li>
                             <li>Workshop digitalisasi UMKM lokal</li>
-
-
                         </ul>
                         <p>Program kerja akhir merupakan puncak dari seluruh kegiatan KKN yang telah dilaksanakan.</p>
                     `;
@@ -1084,9 +1216,11 @@
             `;
 
             const imageGallery = images.map((imgPath, index) => `
-                <div style="margin: 0.5rem 0;">
+                <div style="margin: 0.5rem 0; cursor: pointer;" onclick="openImageModal('${imgPath}', 'Dokumentasi ${programType} ${index + 1}')">
                     <img src="${imgPath}" alt="Dokumentasi ${programType} ${index + 1}" 
-                         style="width: 100%; max-width: 500px; border-radius: 10px; margin-bottom: 0.5rem;"
+                         style="width: 100%; max-width: 300px; border-radius: 10px; margin-bottom: 0.5rem; transition: transform 0.3s ease;"
+                         onmouseover="this.style.transform='scale(1.05)'"
+                         onmouseout="this.style.transform='scale(1)'"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; padding: 1rem; background: #f8f9fa; border-radius: 10px; text-align: center; color: #6c757d; border: 2px dashed #dee2e6;">
                         Foto dokumentasi ${programType} ${index + 1}
@@ -1096,12 +1230,15 @@
 
             modal.innerHTML = `
                 <div style="background: white; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; border-radius: 15px; padding: 2rem; position: relative;">
-                    <button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 1rem; right: 1rem; background: #ff4757; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 1.2rem;">×</button>
-                    <h3 style="color: #667eea; margin-bottom: 1rem;">${title}</h3>
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="position: absolute; top: 1rem; right: 1rem; background: #ff4757; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 1.2rem; font-weight: bold;">×</button>
+                    <h3 style="color: #2c6224; margin-bottom: 1rem;">${title}</h3>
                     <div style="color: #333; line-height: 1.6;">${content}</div>
                     <div style="margin-top: 2rem;">
-                        <h5 style="color: #667eea; margin-bottom: 1rem;">Dokumentasi Kegiatan:</h5>
-                        ${imageGallery}
+                        <h5 style="color: #2c6224; margin-bottom: 1rem;">Dokumentasi Kegiatan:</h5>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            ${imageGallery}
+                        </div>
                     </div>
                 </div>
             `;
@@ -1114,19 +1251,6 @@
                     modal.remove();
                 }
             });
-
-            // Add fade in animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }
-            `;
-            if (!document.querySelector('style[data-modal]')) {
-                style.setAttribute('data-modal', 'true');
-                document.head.appendChild(style);
-            }
         }
 
         // Scroll to top functionality
@@ -1138,9 +1262,9 @@
                     scrollBtn.innerHTML = '↑';
                     scrollBtn.style.cssText = `
                         position: fixed;
-                        bottom: 20px;
-                        right: 20px;
-                        background: #667eea;
+                        bottom: 100px;
+                        left: 20px;
+                        background: #2c6224;
                         color: white;
                         border: none;
                         border-radius: 50%;
@@ -1149,7 +1273,7 @@
                         font-size: 1.5rem;
                         cursor: pointer;
                         z-index: 1000;
-                        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+                        box-shadow: 0 5px 15px rgba(44, 98, 36, 0.3);
                         transition: all 0.3s ease;
                     `;
                     scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
